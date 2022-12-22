@@ -1,0 +1,9 @@
+{
+  "src/**/*.ts": [
+    "eslint --fix --quiet"
+  ],
+  "src/**/*.tsx": [
+    "eslint --cache --cache-location .next/cache/eslint/ --fix"
+  ],
+  "package.json": "sort-package-json"
+}

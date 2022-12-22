@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import React, { ReactElement, useCallback, useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { Button } from '../components/Button';
 
 const IndexPage: NextPage = (): ReactElement => {
@@ -13,23 +13,23 @@ const IndexPage: NextPage = (): ReactElement => {
         <div className="mx-auto">
           <div className="p-3 mb-3  border-2 h-full w-full">{count}</div>
           <div className="grid grid-cols-3 gap-2">
-            <Button onClick={useCallback(() => {
+            <Button onClick={() => {
               console.log(count);
 
               setCount(count + 1);
-            }, [count])}>
+            }}>
               +
             </Button>
-            <Button onClick={useCallback(() => {
+            <Button onClick={() => {
               console.log(count);
 
               setCount(count - 1);
-            }, [count])}>
+            }}>
               -
             </Button>
-            <Button onClick={useCallback(() => {
+            <Button onClick={() => {
               setCount(0);
-            }, [count])}>
+            }}>
               clear
             </Button>
           </div>

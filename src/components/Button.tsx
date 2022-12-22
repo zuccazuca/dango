@@ -13,6 +13,5 @@ export const Button: FC<PropsWithChildren<Props>> = ({ onClick, children }): Rea
     >
       {children}
     </button>
-
   );
 };

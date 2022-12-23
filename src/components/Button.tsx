@@ -1,14 +1,15 @@
-import React, { FC, PropsWithChildren, ReactElement } from 'react';
+import React, { FC, MouseEvent, PropsWithChildren, ReactElement } from 'react';
 
 type Props = Readonly<{
-  onClick: () => void;
+  onClick: (e: MouseEvent<HTMLButtonElement>) => void;
+  className: string;
 }>;
 
-export const Button: FC<PropsWithChildren<Props>> = ({ onClick, children }): ReactElement => {
+export const Button: FC<PropsWithChildren<Props>> = ({ onClick, className, children }): ReactElement => {
   return (
     <button
       type="button"
-      className="py-2 bg-cyan-600 text-white rounded border border-gray-200 cursor-pointer"
+      className={className}
       onClick={onClick}
     >
       {children}

@@ -6,9 +6,7 @@ const IndexPage: NextPage = (): ReactElement => {
   const [count, setCount] = useState<number>(0);
 
   return (
-    <div
-      className="m-10 p-4 w-2/3 mx-auto shadow-lg border-1 rounded-2xl"
-    >
+    <div className="m-10 p-4 w-2/3 mx-auto shadow-lg border-1 rounded-2xl">
       <div className="mx-auto">
         <div className="p-3 mb-3 border-2 rounded h-full w-full text-right">
           <span className="text-gray-700 select-none">{count}</span>

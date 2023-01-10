@@ -1,7 +1,7 @@
 import React, { FC, MouseEvent, PropsWithChildren, ReactElement } from 'react';
 
 type Props = Readonly<{
-  onClick: (e: MouseEvent<HTMLButtonElement>) => void;
+  onClick(e: MouseEvent<HTMLButtonElement>): void;
   className: string;
 }>;
 

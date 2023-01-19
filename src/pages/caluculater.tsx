@@ -72,6 +72,7 @@ const IndexPage: NextPage = (): ReactElement => {
             }}>
             <span className="select-none text-xl">C</span>
           </Button>
+          console.log ("abcdefg")
         </div>
       </div>
     </div>

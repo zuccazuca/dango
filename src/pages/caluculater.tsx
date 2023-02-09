@@ -8,7 +8,8 @@ import { Button } from '../components/Button';
 =があること
 =が押されると結果表示されること
 小数点があること、小数計算もできること
-(デザインが)電卓の体をなしていること*/
+(デザインが)電卓の体をなしていること*
+一応完成版/
 
 const IndexPage: NextPage = (): ReactElement => {
   const [count, setCount] = useState<string>("0");

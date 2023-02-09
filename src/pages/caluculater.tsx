@@ -2,8 +2,20 @@ import { NextPage } from 'next';
 import React, { ReactElement, useState } from 'react';
 import { Button } from '../components/Button';
 
+/* [要件]
+0 - 9の数字のボタンがあること
+四則演算(+, -, *, /)のボタンがあること
+=があること
+=が押されると結果表示されること
+小数点があること、小数計算もできること
+(デザインが)電卓の体をなしていること*/
+
 const IndexPage: NextPage = (): ReactElement => {
-  const [count, setCount] = useState<number>(0);
+  const [count, setCount] = useState<string>("0");
+  const [memory, setMemory] = useState<string>("0");
+  const [Operator, setOperator] = useState<string>("");
+  const [waitingForOperand, setWaitingForOperand] = useState<boolean>(true)
+  }
 
   return (
     <div className="m-10 p-4 w-2/3 mx-auto shadow-lg border-1 rounded-2xl">
@@ -15,13 +27,12 @@ const IndexPage: NextPage = (): ReactElement => {
           <Button
             className="py-2 bg-cyan-600 text-white rounded border border-gray-200 cursor-pointer"
             onClick={() => {
-              if (count ===0){
+              if (count ==="0"){
                 console.log(count);
-                setCount(count + 1);
+                setCount("1");
               }else{
                 console.log(count);
-                setCount(count*10+1);
-                //setCountを使用するとnumberしか表示できないので、上記のようになった。このままだと小数点ありの計算に苦労するので修正したい
+                setCount(count+ "1");
               }
             }}>
             <span className="select-none text-xl">1</span>
@@ -29,12 +40,12 @@ const IndexPage: NextPage = (): ReactElement => {
           <Button
             className="py-2 bg-cyan-600 text-white rounded border border-gray-200 cursor-pointer"
             onClick={() => {
-              if (count ===0){
+              if (count ==="0"){
               console.log(count);
-              setCount(count +2);
+              setCount("2");
             }else{
               console.log(count);
-              setCount(count*10+2);
+              setCount(count +"2");
             }
           }}>
             <span className="select-none text-xl">2</span>
@@ -42,31 +53,31 @@ const IndexPage: NextPage = (): ReactElement => {
           <Button
             className="py-2 bg-cyan-600 text-white rounded border border-gray-200 cursor-pointer"
             onClick={() => {
-              setCount(0);
+              setCount("0");
             }}>
             <span className="select-none text-xl">÷</span>
           </Button>
           <Button
             className="py-2 bg-cyan-600 text-white rounded border border-gray-200 cursor-pointer"
             onClick={() => {
-              if (count ===0){
+              if (count ==="0"){
                 console.log(count);
-                setCount(count +3);
+                setCount("3");
               }else{
                 console.log(count);
-                setCount(count*10+3);}
+                setCount(count+ "3");}
             }}>
             <span className="select-none text-xl">3</span>
           </Button>
           <Button
             className="py-2 bg-cyan-600 text-white rounded border border-gray-200 cursor-pointer"
             onClick={() => {
-              if (count ===0){
+              if (count ==="0"){
                 console.log(count);
-                setCount(count +4);
+                setCount("4");
               }else{
                 console.log(count);
-                setCount(count*10+4);}
+                setCount(count +"4");}
             }}>
             <span className="select-none text-xl">4</span>
           </Button>
@@ -80,102 +91,108 @@ const IndexPage: NextPage = (): ReactElement => {
           <Button
             className="py-2 bg-cyan-600 text-white rounded border border-gray-200 cursor-pointer"
             onClick={() => {
-              if (count ===0){
+              if (count ==="0"){
                 console.log(count);
-                setCount(count +5);
+                setCount("5");
               }else{
                 console.log(count);
-                setCount(count*10+5);}
+                setCount(count+"5");}
             }}>
             <span className="select-none text-xl">5</span>
           </Button>      
           <Button
             className="py-2 bg-cyan-600 text-white rounded border border-gray-200 cursor-pointer"
             onClick={() => {
-              if (count ===0){
+              if (count ==="0"){
                 console.log(count);
-                setCount(count +6);
+                setCount("6");
               }else{
                 console.log(count);
-                setCount(count*10+6);}
+                setCount(count+"6");}
             }}>
             <span className="select-none text-xl">6</span>
           </Button>
           <Button
             className="py-2 bg-cyan-600 text-white rounded border border-gray-200 cursor-pointer"
             onClick={() => {
-              setCount(0);
+              setCount("0");
             }}>
             <span className="select-none text-xl">－</span>
           </Button>
           <Button
             className="py-2 bg-cyan-600 text-white rounded border border-gray-200 cursor-pointer"
             onClick={() => {
-              if (count ===0){
+              if (count ==="0"){
                 console.log(count);
-                setCount(count +7);
+                setCount("7");
               }else{
                 console.log(count);
-                setCount(count*10+7);}
+                setCount(count+"7");}
             }}>
             <span className="select-none text-xl">7</span>
           </Button>
           <Button
             className="py-2 bg-cyan-600 text-white rounded border border-gray-200 cursor-pointer"
             onClick={() => {
-              if (count ===0){
+              if (count ==="0"){
                 console.log(count);
-                setCount(count +8);
+                setCount("8");
               }else{
                 console.log(count);
-                setCount(count*10+8);}
+                setCount(count+"8");}
             }}>
             <span className="select-none text-xl">8</span>
           </Button>
           <Button
             className="py-2 bg-cyan-600 text-white rounded border border-gray-200 cursor-pointer"
             onClick={() => {
-              setCount(0);
+              const result = parseFloat(count) + parseFloat(memory);
+              setMemory(result.toString());
+              setCount("0");
+              setWaitingForOperand(true);
+              setOperator("");
             }}>
             <span className="select-none text-xl">＋</span>
           </Button>
           <Button
             className="py-2 bg-cyan-600 text-white rounded border border-gray-200 cursor-pointer"
             onClick={() => {
-              if (count ===0){
+              if (count ==="0"){
                 console.log(count);
-                setCount(count +9);
+                setCount("9");
               }else{
                 console.log(count);
-                setCount(count*10+9);}
+                setCount(count+"9");}
             }}>
             <span className="select-none text-xl">9</span>
           </Button>
           <Button
             className="py-2 bg-cyan-600 text-white rounded border border-gray-200 cursor-pointer"
             onClick={() => {
-              if (count ===0){
+              if (count ==="0"){
                 console.log(count);
-                setCount(count +0);
+                setCount("0");
               }else{
                 console.log(count);
-                setCount(count*10+0);}
+                setCount(count+"0");}
             }}>
             <span className="select-none text-xl">0</span>
           </Button>
           <Button
             className="py-2 bg-cyan-600 text-white rounded border border-gray-200 cursor-pointer"
             onClick={() => {
-              setCount(0);
+              setCount("0");
             }}>
             <span className="select-none text-xl">=</span>
           </Button>
           <Button
             className="py-2 bg-cyan-600 text-white rounded border border-gray-200 cursor-pointer"
             onClick={() => {
-              if (count !==0){
+              if (count.includes(".")){
                 console.log(count);
-                setCount(count);//.の表現の仕方がよくわからない
+              }else{
+                console.log(count);
+                setCount(count+".");
               }
             }}>
             <span className="select-none text-xl">.</span>
@@ -183,7 +200,7 @@ const IndexPage: NextPage = (): ReactElement => {
           <Button
             className="py-2 bg-cyan-600 text-white rounded border border-gray-200 cursor-pointer"
             onClick={() => {
-              setCount(0);
+              setCount("0");
             }}>
             <span className="select-none text-xl">C</span>
           </Button>

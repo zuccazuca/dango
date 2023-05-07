@@ -1,14 +1,21 @@
 import React, { FC, MouseEvent, PropsWithChildren, ReactElement } from 'react';
 
 type Props = Readonly<{
-  onClick(e: MouseEvent<HTMLButtonElement>): void;
+  disabled?: boolean;
   className: string;
+  onClick(e: MouseEvent<HTMLButtonElement>): void;
 }>;
 
-export const Button: FC<PropsWithChildren<Props>> = ({ onClick, className, children }): ReactElement => {
+export const Button: FC<PropsWithChildren<Props>> = ({
+  disabled,
+  className,
+  onClick,
+  children
+}): ReactElement => {
   return (
     <button
       type="button"
+      disabled={disabled}
       className={className}
       onClick={onClick}
     >
